@@ -64,7 +64,7 @@ data = data.reset_index(drop=True)
 # --------------------------
 # 6. LOW-PASS FILTER FUNCTION
 # --------------------------
-def low_pass_filter(df, col, fs=96, cutoff=4, order=4):
+def low_pass_filter(df, col, fs=96, cutoff=6, order=4):
     nyq = 0.5 * fs
     normal_cutoff = cutoff / nyq
     b, a = butter(order, normal_cutoff, btype='low', analog=False)
@@ -115,7 +115,7 @@ for table, axis, sensor in [
 
 
 fs = 96
-cutoff = 4
+cutoff = 6
 
 for col in ['acc_x','acc_y','acc_z','orient_x','orient_y','orient_z']:
     data[col+'_filtered'] = low_pass_filter(data, col, fs, cutoff)
