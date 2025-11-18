@@ -50,9 +50,8 @@ for col in ['acc_x','acc_y','acc_z','gyro_x','gyro_y','gyro_z','orient_x','orien
     data[col] = pd.to_numeric(data[col], errors='coerce')
 data = data.ffill().bfill()
 
-# --------------------------
 # 5. OUTLIER REMOVAL (Z-score)
-# --------------------------
+
 feature_cols = ['acc_x','acc_y','acc_z','orient_x','orient_y','orient_z','gyro_x','gyro_y','gyro_z']
 
 def remove_outliers(df, cols, threshold=4):
